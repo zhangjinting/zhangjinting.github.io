@@ -76,7 +76,7 @@
 <meta property="og:site_name" content="张金婷的个人博客">
 <meta property="og:description" content="详解reduce方法">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-11-13T13:56:35.036Z">
+<meta property="og:updated_time" content="2017-11-15T06:28:51.055Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Array.prototype.reduce()">
 <meta name="twitter:description" content="详解reduce方法">
@@ -344,7 +344,7 @@
 </ul>
 </li>
 </ul>
-<h3 id="reduce参数"><a href="#reduce参数" class="headerlink" title="reduce参数"></a>reduce参数</h3><p>再看官方描述的时候也比较晕，案例是最好的老师，首先我们来看两个案例，就能清楚的理解reduce到底怎么使用了。</p>
+<h3 id="reduce参数"><a href="#reduce参数" class="headerlink" title="reduce参数"></a>reduce参数</h3><p>在看官方描述的时候也比较晕，首先我们来看两个案例，就能清楚的理解reduce到底怎么使用了。</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//案例1</span></div><div class="line"><span class="keyword">var</span> sum2 = [<span class="number">0</span>, <span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>].reduce(<span class="function"><span class="keyword">function</span> (<span class="params">accumulator, currentValue</span>) </span>&#123;</div><div class="line">    <span class="keyword">return</span> accumulator + currentValue;</div><div class="line">&#125;,<span class="number">5</span>);</div><div class="line">        </div><div class="line"><span class="built_in">console</span>.log(sum2); <span class="comment">//输出结果是11</span></div></pre></td></tr></table></figure>
 <p>在案例1中，reduce方法中传入了可选参数 <code>initialValue</code> ，此时这个5就会作为callback第一次执行时候的accumulator（第一个参数），与数组中的每一个元素从左至右依次执行callback中的操作，每次执行callback的返回值，会作为下一次回调函数的第一个参数，执行过程如下:</p>
 <table>
@@ -417,7 +417,7 @@
 <td style="text-align:center">3</td>
 </tr>
 <tr>
-<td style="text-align:center">2</td>
+<td style="text-align:center">3</td>
 <td style="text-align:center">3</td>
 <td style="text-align:center">3</td>
 <td style="text-align:center">[0, 1, 2, 3]</td>
