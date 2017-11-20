@@ -76,7 +76,7 @@
 <meta property="og:site_name" content="张金婷的个人博客">
 <meta property="og:description" content="webpack及相关常用配置">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-11-20T05:40:43.364Z">
+<meta property="og:updated_time" content="2017-11-20T05:52:03.917Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="webpack构建工具">
 <meta name="twitter:description" content="webpack及相关常用配置">
@@ -360,7 +360,6 @@
 </ul>
 <figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&lt;!DOCTYPE html&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">"en"</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"UTF-8"</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">title</span>&gt;</span>Document<span class="tag">&lt;/<span class="name">title</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></div><div class="line">  <span class="comment">&lt;!-- 最后记得把 index.html 文件中的脚本应用改为打包之后的结果文件路径。 --&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"js/bundle.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></div></pre></td></tr></table></figure>
 <p>打开查看 index.html。</p>
-<p>​    </p>
 <p>为了划分目录结构的清晰，一般我们把项目中的源码和打包结果做如下划分：</p>
 <ul>
 <li>把源码存储到 src 目录中</li>
@@ -372,7 +371,6 @@
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">webpack</div></pre></td></tr></table></figure>
 <p>如果将webpack.config.js重命名为webpack.dev.config.js，则直接执行默认的webpack命令则会找不到相应的配置文件，需要借助于webpack的–config选项来指定配置文件</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">webpack --config webpack.dev.config.js</div></pre></td></tr></table></figure>
-<p>​    </p>
 <h3 id="资源管理"><a href="#资源管理" class="headerlink" title="资源管理"></a>资源管理</h3><p>webpack不仅可以打包Javascript模块，也可以把网页开发中的一切资源当做模块来打包处理。</p>
 <p>但是它本身不支持，它只是一个打包平台，其他的资源例如css、less、sass等需要结合插件来实现，这些插件在webpack中称之为loader</p>
 <h4 id="Loading-CSS"><a href="#Loading-CSS" class="headerlink" title="Loading CSS"></a>Loading CSS</h4><p>打包css也是把css文件内容转换成了一个javascript模块，然后再运行js的时候会动态创建一个style节点插入到body中</p>
@@ -396,7 +394,7 @@
 <li>配置：</li>
 </ul>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">module</span>: &#123;</div><div class="line">  rules: [</div><div class="line">    &#123;</div><div class="line">      test: <span class="regexp">/.css$/</span>,</div><div class="line">      use: [</div><div class="line">        <span class="string">'style-loader'</span>,</div><div class="line">        <span class="string">'css-loader'</span></div><div class="line">      ]</div><div class="line">    &#125;,</div><div class="line">    &#123;</div><div class="line">      test: <span class="regexp">/.(jpg|png|gif|svg)$/</span>,</div><div class="line">      use: [</div><div class="line">        <span class="string">'file-loader'</span></div><div class="line">      ]</div><div class="line">    &#125;</div><div class="line">  ]</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h3 id=""><a href="#" class="headerlink" title=" "></a> </h3><h4 id="Loading-Less"><a href="#Loading-Less" class="headerlink" title="Loading Less"></a>Loading Less</h4><ul>
+<h4 id="Loading-Less"><a href="#Loading-Less" class="headerlink" title="Loading Less"></a>Loading Less</h4><ul>
 <li>安装依赖：</li>
 </ul>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#</span> 如果 css-loader 安装过了就不需要安装了</div><div class="line">npm i -D css-loader style-loader less less-loader</div></pre></td></tr></table></figure>
@@ -412,54 +410,79 @@
 <ul>
 <li><strong>babel-loader  只转换语法</strong></li>
 </ul>
-<p>安装依赖</p>
+<ul>
+<li>安装依赖</li>
+</ul>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm install --save-dev babel-loader babel-core babel-preset-env</div></pre></td></tr></table></figure>
-<p>配置</p>
+<ul>
+<li>配置</li>
+</ul>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">module</span>: &#123;</div><div class="line">  rules: [</div><div class="line">    &#123;</div><div class="line">      test: <span class="regexp">/\.js$/</span>,</div><div class="line">      <span class="comment">// 不转换 node_modules 中的文件模块</span></div><div class="line">      exclude: <span class="regexp">/(node_modules|bower_components)/</span>, </div><div class="line">      use: &#123;</div><div class="line">        loader: <span class="string">'babel-loader'</span>,</div><div class="line">        options: &#123;</div><div class="line">          presets: [<span class="string">'env'</span>] <span class="comment">//env 包含1234所有转码规则</span></div><div class="line">        &#125;</div><div class="line">      &#125;</div><div class="line">    &#125;</div><div class="line">  ]</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <ul>
-<li><p><strong>babel-polyfill  垫脚片</strong></p>
-<p>解决低版本浏览器中不支持的API</p>
-</li>
+<li><strong>babel-polyfill  垫脚片</strong></li>
 </ul>
-<p>安装：</p>
+<p>解决低版本浏览器中不支持的API</p>
+<ul>
+<li>安装：</li>
+</ul>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm i -D babel-polyfill</div></pre></td></tr></table></figure>
-<p>配置：</p>
+<ul>
+<li>配置：</li>
+</ul>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">entry: [<span class="string">'babel-polyfill'</span>, <span class="string">'./src/main.js'</span>],</div></pre></td></tr></table></figure>
 <ul>
 <li><strong>transform-runtime 解决代码重复问题</strong></li>
 </ul>
 <p>打包过程中，babel会在某些包提供一些工具函数，而这些工具函数可能会重复出现在多个模块，这样的话就会导致打包体积过大，所以babel提供了一个babel-transform-runtime来解决</p>
-<p>安装：</p>
+<ul>
+<li>安装：</li>
+</ul>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">npm install babel-plugin-transform-runtime --save-dev</div><div class="line">npm install babel-runtime --save</div></pre></td></tr></table></figure>
-<p>配置：</p>
+<ul>
+<li>配置：</li>
+</ul>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">module</span>: &#123;</div><div class="line">  rules: [</div><div class="line">    &#123;</div><div class="line">      test: <span class="regexp">/\.js$/</span>,</div><div class="line">      exclude: <span class="regexp">/(node_modules|bower_components)/</span>,</div><div class="line">      use: &#123;</div><div class="line">        loader: <span class="string">'babel-loader'</span>,</div><div class="line">        options: &#123;</div><div class="line">          presets: [<span class="string">'env'</span>],</div><div class="line">          plugins: [<span class="string">'transform-runtime'</span>]</div><div class="line">        &#125;</div><div class="line">      &#125;</div><div class="line">    &#125;</div><div class="line">  ]</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h4 id="-1"><a href="#-1" class="headerlink" title=" "></a> </h4><ul>
+<ul>
 <li><strong>cacheDirectory 加入缓存节省编译时间</strong></li>
 </ul>
 <p>node_module 中会增加cache目录，会缓存打包信息，有效减少打包信息</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">module</span>: &#123;</div><div class="line">  rules: [</div><div class="line">    &#123;</div><div class="line">      test: <span class="regexp">/\.js$/</span>,</div><div class="line">      exclude: <span class="regexp">/(node_modules|bower_components)/</span>,</div><div class="line">      use: &#123;</div><div class="line">        loader: <span class="string">'babel-loader'</span>,</div><div class="line">        options: &#123;</div><div class="line">          <span class="comment">// 默认把打包的结果缓存到 node_modules/.cache 模板</span></div><div class="line">          cacheDirectory: <span class="literal">true</span>,</div><div class="line">          presets: [<span class="string">'env'</span>],</div><div class="line">          plugins: [<span class="string">'transform-runtime'</span>]</div><div class="line">        &#125;</div><div class="line">      &#125;</div><div class="line">    &#125;,</div><div class="line">  ]</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <h3 id="输出管理"><a href="#输出管理" class="headerlink" title="输出管理"></a>输出管理</h3><h4 id="HtmlWebpackPlugin"><a href="#HtmlWebpackPlugin" class="headerlink" title="HtmlWebpackPlugin"></a>HtmlWebpackPlugin</h4><p>有一个问题，当打包结束的时候，如果index.html在根目录直接运行的话，图片资源这些路径就无法直接访问到了。解决方案就是把index.html放在dist目录中。但是dist是打包变异的结果而非源码，所以把index.html放在dist就不合适，而且如果更改bundle名字，那么html里面的引入也要手动修改。</p>
 <p>综合以上考虑，我们使用一个插件<code>html-webpack-plugin</code>   </p>
-<p>安装依赖：</p>
+<ul>
+<li>安装依赖：</li>
+</ul>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm i -D html-webpack-plugin</div></pre></td></tr></table></figure>
-<p>配置：</p>
+<ul>
+<li>配置：</li>
+</ul>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">plugins: [</div><div class="line">  <span class="keyword">new</span> htmlWebpackPlugin(&#123;</div><div class="line">    template: <span class="string">'./index.html'</span></div><div class="line">  &#125;)</div><div class="line">],</div></pre></td></tr></table></figure>
 <p>这个插件的作用就是把index.html打包到你的bundle.js 文件所属目录，也就是说bundle在哪里，index就在哪里，这个插件还可以配置压缩html的处理</p>
 <h4 id="webpack-dev-server-自动刷新浏览器"><a href="#webpack-dev-server-自动刷新浏览器" class="headerlink" title="webpack-dev-server 自动刷新浏览器"></a>webpack-dev-server 自动刷新浏览器</h4><p>这是一个很好用的工具，每次手动打包很麻烦，还需要手动刷新浏览器</p>
 <p>而这个工具会自动帮你打包，打包完毕只有会自动开启一个服务器，默认监听 8080 端口号，同时自动打开浏览器让你访问，接下来就会自动监视代码的改变，然后自动编译，编译完毕，自动刷新浏览器。   </p>
-<p>安装依赖：</p>
+<ul>
+<li>安装依赖：</li>
+</ul>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm i -D webpack-dev-server</div></pre></td></tr></table></figure>
-<p>配置：</p>
+<ul>
+<li>配置：</li>
+</ul>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">devServer: &#123;</div><div class="line">  <span class="comment">// 配置 webpack-dev-server 的 www 目录</span></div><div class="line">  contentBase: <span class="string">'./'</span></div><div class="line">&#125;,</div></pre></td></tr></table></figure>
 <p>这里配置<code>./</code>的话，webpack-dev-server会直接把资源打包到根目录下（但是你看不到他，在内存中），这个时候在index.html文件中请求的资源就是相对于根目录的   </p>
-<p>配置 npm scritps:</p>
+<ul>
+<li>配置 npm scritps:</li>
+</ul>
 <figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">"scripts": &#123;</div><div class="line">  "build": "webpack",</div><div class="line">  "watch-build": "webpack --watch",</div><div class="line">  "dev": "webpack-dev-server --open"  //这里</div><div class="line">&#125;,</div></pre></td></tr></table></figure>
-<p>启动开发模式：</p>
+<ul>
+<li>启动开发模式：</li>
+</ul>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm run dev</div></pre></td></tr></table></figure>
 <h4 id="Hot-Module-Replacement-热更新"><a href="#Hot-Module-Replacement-热更新" class="headerlink" title="Hot Module Replacement 热更新"></a>Hot Module Replacement 热更新</h4><p>保存立即更新</p>
-<p>配置：</p>
+<ul>
+<li>配置：</li>
+</ul>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> webpack = <span class="built_in">require</span>(<span class="string">'webpack'</span>)  <span class="comment">//配置这里</span></div><div class="line"></div><div class="line"><span class="comment">//配置plugins</span></div><div class="line">plugins: [</div><div class="line">    <span class="keyword">new</span> htmlWebpackPlugin(&#123;</div><div class="line">      template: <span class="string">'./index.html'</span></div><div class="line">    &#125;),</div><div class="line">    <span class="keyword">new</span> webpack.NamedModulesPlugin(), <span class="comment">//配置这里</span></div><div class="line">    <span class="keyword">new</span> webpack.HotModuleReplacementPlugin()  <span class="comment">//配置这里</span></div><div class="line">  ],</div><div class="line"><span class="comment">//配置devServer</span></div><div class="line">devServer: &#123;</div><div class="line">    contentBase: <span class="string">'./'</span>,</div><div class="line">    +++ hot: <span class="literal">true</span>  <span class="comment">//配置这里</span></div><div class="line">&#125;,</div></pre></td></tr></table></figure>
-<h3 id="关于第三方包"><a href="#关于第三方包" class="headerlink" title="关于第三方包"></a>关于第三方包</h3><p>通产我们不打包第三方包，因为第三方包太大，和bundle打包在一起会造成资源体积过大，所有我们还是通过script标签的方式引入页面中</p>
+<h3 id="关于第三方包"><a href="#关于第三方包" class="headerlink" title="关于第三方包"></a>关于第三方包</h3><p>通常我们不打包第三方包，因为第三方包太大，和bundle打包在一起会造成资源体积过大，所有我们还是通过script标签的方式引入页面中</p>
 <p>那如何配置webpack不打包第三方包呢？我们以JQuery为例</p>
 <ul>
 <li>下载第三方包</li>
@@ -482,7 +505,6 @@
 <li>打包测试</li>
 </ul>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm run build</div></pre></td></tr></table></figure>
-<p>## </p>
 
       
     </div>
@@ -663,7 +685,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#webpack"><span class="nav-number">1.</span> <span class="nav-text">webpack</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#什么是webpack"><span class="nav-number">1.0.1.</span> <span class="nav-text">什么是webpack</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#安装"><span class="nav-number">1.0.2.</span> <span class="nav-text">安装</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#全局安装"><span class="nav-number">1.0.2.1.</span> <span class="nav-text">全局安装</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#本地安装（推荐）"><span class="nav-number">1.0.2.2.</span> <span class="nav-text">本地安装（推荐）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Hello-world"><span class="nav-number">1.0.2.3.</span> <span class="nav-text">Hello world</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#webpack配置文件"><span class="nav-number">1.0.3.</span> <span class="nav-text">webpack配置文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#资源管理"><span class="nav-number">1.0.4.</span> <span class="nav-text">资源管理</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Loading-CSS"><span class="nav-number">1.0.4.1.</span> <span class="nav-text">Loading CSS</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Loading-Images"><span class="nav-number">1.0.4.2.</span> <span class="nav-text">Loading Images</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#"><span class="nav-number">1.0.5.</span> <span class="nav-text"> </span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Loading-Less"><span class="nav-number">1.0.5.1.</span> <span class="nav-text">Loading Less</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Loading-Vue"><span class="nav-number">1.0.5.2.</span> <span class="nav-text">Loading Vue</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#transpiling-JavaScript"><span class="nav-number">1.0.5.3.</span> <span class="nav-text">transpiling JavaScript</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#-1"><span class="nav-number">1.0.5.4.</span> <span class="nav-text"> </span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#输出管理"><span class="nav-number">1.0.6.</span> <span class="nav-text">输出管理</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#HtmlWebpackPlugin"><span class="nav-number">1.0.6.1.</span> <span class="nav-text">HtmlWebpackPlugin</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#webpack-dev-server-自动刷新浏览器"><span class="nav-number">1.0.6.2.</span> <span class="nav-text">webpack-dev-server 自动刷新浏览器</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Hot-Module-Replacement-热更新"><span class="nav-number">1.0.6.3.</span> <span class="nav-text">Hot Module Replacement 热更新</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#关于第三方包"><span class="nav-number">1.0.7.</span> <span class="nav-text">关于第三方包</span></a></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#webpack"><span class="nav-number">1.</span> <span class="nav-text">webpack</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#什么是webpack"><span class="nav-number">1.0.1.</span> <span class="nav-text">什么是webpack</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#安装"><span class="nav-number">1.0.2.</span> <span class="nav-text">安装</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#全局安装"><span class="nav-number">1.0.2.1.</span> <span class="nav-text">全局安装</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#本地安装（推荐）"><span class="nav-number">1.0.2.2.</span> <span class="nav-text">本地安装（推荐）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Hello-world"><span class="nav-number">1.0.2.3.</span> <span class="nav-text">Hello world</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#webpack配置文件"><span class="nav-number">1.0.3.</span> <span class="nav-text">webpack配置文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#资源管理"><span class="nav-number">1.0.4.</span> <span class="nav-text">资源管理</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Loading-CSS"><span class="nav-number">1.0.4.1.</span> <span class="nav-text">Loading CSS</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Loading-Images"><span class="nav-number">1.0.4.2.</span> <span class="nav-text">Loading Images</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Loading-Less"><span class="nav-number">1.0.4.3.</span> <span class="nav-text">Loading Less</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Loading-Vue"><span class="nav-number">1.0.4.4.</span> <span class="nav-text">Loading Vue</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#transpiling-JavaScript"><span class="nav-number">1.0.4.5.</span> <span class="nav-text">transpiling JavaScript</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#输出管理"><span class="nav-number">1.0.5.</span> <span class="nav-text">输出管理</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#HtmlWebpackPlugin"><span class="nav-number">1.0.5.1.</span> <span class="nav-text">HtmlWebpackPlugin</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#webpack-dev-server-自动刷新浏览器"><span class="nav-number">1.0.5.2.</span> <span class="nav-text">webpack-dev-server 自动刷新浏览器</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Hot-Module-Replacement-热更新"><span class="nav-number">1.0.5.3.</span> <span class="nav-text">Hot Module Replacement 热更新</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#关于第三方包"><span class="nav-number">1.0.6.</span> <span class="nav-text">关于第三方包</span></a></li></ol></li></ol></li></ol></div>
             
 
           </div>
